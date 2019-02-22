@@ -79,35 +79,40 @@ Page({
           wx.removeStorageSync('token')
           _this.login();
         } else {
-          // 回到原来的地方放
-          app.navigateToLogin = false
+    
           wx.navigateBack();
         }
       })
-      return
-    } 
-    wx.login({
-      success: res => {
-        let data = {
-          code: res.code,
-          type: 2
-        }
+      
+    }else{
+      wx.login({
+        success: res => {
+          let data = {
+            code: res.code,
+            type: 2
+          }
 
-        WXAPI.login(data).then((res) => {
-          console.log(res)
-          if (res.code == 10000) {
-            _this.registerUser();
-            return;
-          }
-          if (res.code == 0) {
-            wx.setStorageSync('token', res.data.token);
-            wx.setStorageSync('uid', res.data.uid)
-            app.navigateToLogin = false
-            wx.navigateBack();
-          }
-        })
-      }
-    })
+          WXAPI.login(data).then((res) => {
+            console.log(res)
+            if (res.code == 10000) {
+              _this.registerUser();
+              return;
+            }
+            if (res.code == 0) {
+              wx.setStorageSync('token', res.data.token);
+              wx.setStorageSync('uid', res.data.uid)
+
+              wx.navigateBack();
+              _this.login()
+            }
+            if (res.code != 0) {
+              return;
+            }
+          })
+        }
+      })
+    } 
+   
    
   },
   registerUser:function(){
