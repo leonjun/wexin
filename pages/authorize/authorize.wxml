@@ -1,0 +1,5 @@
+<!--pages/authorize/authorize.wxml-->
+<view>
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 开始使用
+  </button>
+</view>

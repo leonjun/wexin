@@ -1,0 +1,39 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/about/about",
+    "pages/cart/cart",
+    "pages/authorize/authorize"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "lijun",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "selectedColor": "#ffb73a",
+    "list":[
+      {
+        "pagePath": "pages/index/index",
+        "text":"首页",
+        "iconPath":"images/tabnav/home-off.png",
+        "selectedIconPath":"images/tabnav/home-on.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "images/tabnav/cart-off.png",
+        "selectedIconPath": "images/tabnav/cart-on.png"
+      },
+      {
+        "pagePath":"pages/about/about",
+        "text":"我的",
+        "iconPath":"images/tabnav/my-off.png",
+        "selectedIconPath":"images/tabnav/my-on.png"
+      }
+      
+    ]
+  }
+}

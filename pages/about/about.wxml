@@ -1,0 +1,11 @@
+<view class='about'>
+  <view class='user'>
+    <block>
+      <image class='about-user-img' src='{{userInfo.avatarUrl}}'></image>
+      <text class='nick-name'>{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view>
+  
+  </view>
+</view>
