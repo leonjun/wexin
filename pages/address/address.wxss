@@ -1,0 +1,31 @@
+/* pages/address/address.wxss */
+/* @import "../../common/common.wxss"; */
+.addressLists{
+  text-align: center;
+}
+.bottomAdd{
+  position: fixed;
+  bottom: 0;
+  line-height: 90rpx;
+  height: 90rpx;
+  font-size: 30rpx;
+  border-top: 1px solid #ccc;
+  width: 100%;
+  padding-left: 20rpx;
+  background-color: #fff;
+  overflow: hidden
+}
+
+.triangle{
+  position: absolute;
+  display: inline-block;
+    content: " ";
+    height: 22rpx;
+    width: 22rpx;
+    border-width: 4rpx 4rpx 0 0;
+    border-color: #c7c7cc;
+    border-style: solid;
+  right: 48rpx;
+  transform:rotate(45deg);
+  top: 32rpx;
+}

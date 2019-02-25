@@ -1,15 +1,22 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/logs/logs",
     "pages/about/about",
+    "pages/index/index",
+    "pages/address-add/index",
+    "pages/address/address",
+    
+    
+    
+    "pages/logs/logs",
+    
     "pages/cart/cart",
+   
     "pages/authorize/authorize"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "lijun",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle":"black"
   },
   "tabBar":{

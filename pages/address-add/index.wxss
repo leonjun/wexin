@@ -1,0 +1,50 @@
+/* pages/address-add/index.wxss */
+
+page{
+  height: 100%
+}
+.page{
+  height: 100%;
+  font-size: 28rpx;
+  background-color: #f5f5f5;
+  
+}
+.add-address-form{
+  background-color: #fff;
+  padding: 0 20rpx;
+}
+.form-item{
+  display: flex;
+  height: 90rpx;
+  line-height: 90rpx;
+ 
+  border-bottom: 2rpx solid #aaa;
+}
+.form-item-n{
+  display: flex;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.form-item-left{
+  width: 170rpx;
+  
+}
+.form-item-right{
+ 
+}
+.form-item-right input{
+  line-height: 90rpx;
+  height: 90rpx;
+  padding-left: 10rpx;
+  
+}
+.bts{
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+}
+.bts button{
+  margin: 20rpx 0;
+}
+.selectAddress{
+  display: flex
+}

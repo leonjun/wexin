@@ -1,0 +1,20 @@
+<!--pages/address/address.wxml-->
+<view>
+  <view class='addressLists'>
+    <view wx:if="{{addressLists=='无'}}">
+      <text>暂无数据</text>
+     
+    </view>
+    <view wx:else>
+       <view wx:for="{{addressLists}}">{{item}}</view>
+    </view>
+  </view>
+  <view class='bottomAdd'>
+        <view class='bottomBt'>
+          <navigator url='/pages/address-add/index'>新增地址</navigator>
+          <span class='triangle'>
+          </span>
+        </view>
+             
+  </view>
+</view>

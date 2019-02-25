@@ -1,0 +1,61 @@
+<!--pages/address-add/index.wxml-->
+<view class='page'>
+  <view>
+    <form bindsubmit='bindSubmit'>
+      <view class='add-address-form'>
+        <view class='form-item'>
+          <view class='form-item-left'>姓名</view>
+          <view class='form-item-right'>
+            <input name="name" placeholder='姓名'></input>
+          </view>
+        </view>
+
+        <view class='form-item'>
+          <view class='form-item-left'>电话</view>
+          <view class='form-item-right'>
+            <input type='number' maxlength="11" name="phone" placeholder='电话号码'></input>
+          </view>
+        </view>
+
+        <view class='form-item'>
+          <view class='form-item-left'>选择地区</view>
+          <view class='form-item-right selectAddress'>
+            <picker bindchange='chagecity' class='pick' mode = 'region'>
+              
+              <view wx:if="{{selectAddress=='请选择'}}">
+                {{selectAddress}}
+              </view>
+              <view wx:else>
+                <text style='margin-right:20rpx' wx:for="{{selectAddress}}" wx:key="{{index}}">{{item}}</text>
+              </view>
+            </picker>
+            
+          </view>
+        </view>
+
+        <view class='form-item'>
+          <view class='form-item-left'>详细地址</view>
+          <view class='form-item-right'>
+            <input name="detailAddress" placeholder='填写详细地址'></input>
+          </view>
+        </view>
+
+        <view class='form-item-n'>
+          <view class='form-item-left'>邮编</view>
+          <view class='form-item-right'>
+            <input type='number' name="code" placeholder='填写邮政编码'></input>
+          </view>
+        </view>
+        
+      </view>
+      <view class='bts'>
+          <view>
+            <button formType='submit' type='primary'>保存</button>
+          </view>
+          <view>
+            <button bindtap='cancle' type='default'>取消</button>
+          </view>
+      </view>
+    </form>
+  </view>
+</view>

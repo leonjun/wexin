@@ -1,7 +1,7 @@
 module.exports = {
   version: "6.0.4",
   note: '引入WeUI组件',
-  domain: "leonjun", // 如果你的域名是： https://api.it120.cc/abcd 那么这里只要填写 abcd
+  subDomain: "leonjun", // 如果你的域名是： https://api.it120.cc/abcd 那么这里只要填写 abcd
   appid: "wx0f2b575134a4debf", // 您的小程序的appid，购物单功能需要使用
   shareProfile: '李军' // 首页转发的时候话术
 }

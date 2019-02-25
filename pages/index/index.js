@@ -18,7 +18,9 @@ Page({
   },
   onLoad: function () {
     
-    
+    WXAPI.getMobile('13699463829').then(res=>{
+      console.log(res)
+    })
 
 
     if (app.globalData.userInfo) {
