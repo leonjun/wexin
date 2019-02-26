@@ -1,30 +1,21 @@
 // pages/address/address.js
-const WXAPI=require('../../api/api.js')
+const WXAPI=require('../../api/api.js');
+const app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    addressLists:"无"
+    addressLists:"无",
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const token=wx.getStorageSync('token')
-    let data={
-      token:token
-    }
-    WXAPI.getAllAddress(data).then(res=>{
-      if(res.code==0 && res.data!=''){
-        
-        this.data.addressLists = res.data;
-        
-      }
-      console.log(this.data)
-    })
+    
   },
 
   /**
@@ -38,7 +29,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const token = wx.getStorageSync('token')
+    let data = {
+      token: token
+    }
+    WXAPI.getAllAddress(data).then(res => {
+      if (res.code == 0 && res.data != '') {
+        this.setData({
+          addressLists: res.data
+        })
+      }
+      console.log(this.data)
+    })
   },
 
   /**
@@ -77,5 +79,11 @@ Page({
   },
   adAddress:function(){
 
+  },
+  editAddress:function(e){
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/address-add/index?id=' + e.currentTarget.dataset.id,
+    })
   }
 })

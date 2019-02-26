@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import "/common/font.wxss";
 .container {
   height: 100%;
   display: flex;

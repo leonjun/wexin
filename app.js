@@ -23,6 +23,12 @@ App({
       }
     })
     
+    let token=wx.getStorageSync('token');
+    if(!token){
+      wx.reLaunch({
+        url: 'pages/authorize/authorize',
+      })
+    }
    
     // wx.getSetting({
       

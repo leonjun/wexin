@@ -1,12 +1,24 @@
 <!--pages/address/address.wxml-->
 <view>
   <view class='addressLists'>
-    <view wx:if="{{addressLists=='无'}}">
+    <!-- <view wx:if="{{addressLists=='无'}}">
       <text>暂无数据</text>
      
-    </view>
-    <view wx:else>
-       <view wx:for="{{addressLists}}">{{item}}</view>
+    </view> -->
+   
+    <view>
+       <view class='address' wx:for="{{addressLists}}" wx:key="{{index}}">
+          <view class='address-name'>
+            <text>{{item.linkMan}}</text>
+            <text>{{item.mobile}}</text>      
+          </view>
+          <view class='address-deta'>
+            {{item.provinceStr}}{{item.cityStr}}{{item.address}}
+          </view>
+          <view bindtap='editAddress' class='edit' data-id="{{item.id}}">
+            <text class="fa fa-pencil fa-fw"></text>
+          </view>
+       </view>
     </view>
   </view>
   <view class='bottomAdd'>

@@ -1,5 +1,6 @@
 <!--pages/authorize/authorize.wxml-->
-<view>
-  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 开始使用
+<view class='container'>
+  <button open-type="getUserInfo" type='primary' bindgetuserinfo="getUserInfo">
+    授权登陆
   </button>
 </view>

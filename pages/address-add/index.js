@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     selectAddress:"请选择",
     addressCode:""
   },
@@ -14,7 +15,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    let _this=this;
+    if(options.id){
+      let data={
+        id:options.id,
+        token:wx.getStorageSync('token')
+      }
+      WXAPI.getAddressDetail(data).then(res=>{
+        console.log(res)
+        if(res.code ==0){
+          _this.setData({
+            id: options.id,
+            addressData:res.data,
+           
+            selectAddress:[
+              res.data.provinceStr, res.data.cityStr
+            ],
+            addressCode:[
+              res.data.provinceId, res.data.cityId
+            ]
+          })
+        }
+      })
+    }
   },
 
   /**
@@ -73,10 +97,11 @@ Page({
     let linkMan = e.detail.value.name;
     let address = e.detail.value.detailAddress;
     let mobile = e.detail.value.phone;
-    let provinceId, cityId
+    let provinceId, cityId //districtId
     if(this.data.addressCode){
       provinceId = this.data.addressCode[0];
       cityId = this.data.addressCode[1];
+      //districtId = this.data.addressCode[2];
     }
     let token=wx.getStorageSync('token');
     console.log(e)
@@ -97,12 +122,32 @@ Page({
       })
       return;
     }
-    WXAPI.adAddress(data).then(res=>{
-      console.log(res);
-      if(res.code==0){
-        wx.navigateBack({ delta: 1 })
-      }
-    })
+    if(this.data.id){
+      //更新
+      data.id = this.data.id;
+      
+      WXAPI.updateAddress(data).then(res=>{
+        console.log(res);
+        wx.navigateBack({
+          delta:1,
+        })
+      })
+    }else{
+      //新增
+      WXAPI.adAddress(data).then(res => {
+        console.log(res);
+        if (res.code == 0) {
+          wx.navigateBack({ delta: 1 })
+        }else{
+          
+          wx.showModal({
+            title: '提示',
+            content: res.msg,
+          })
+        }
+      })
+    }
+    
   },
   chagecity:function(e){
 
@@ -112,5 +157,34 @@ Page({
       addressCode: e.detail.code,
       selectAddress:e.detail.value
     })
+  },
+  deleteAddress:function(){
+    let id =this.data.id;
+    let data ={
+      id:id,
+      token:wx.getStorageSync('token')
+    }
+    wx.showModal({
+      title: '警告',
+      content: '确定要删除吗？',
+      success:function(res){
+        if(res.confirm){
+          WXAPI.deleteAddress(data).then(res => {
+            if (res.code == 0) {
+              wx.navigateBack({
+                delta: 1
+              })
+            } else {
+              wx.showModal({
+                title: 'ohhhh',
+                content: res.msg,
+              })
+            }
+          })
+
+        }
+      }
+    })
+    
   }
 })

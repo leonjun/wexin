@@ -22,7 +22,7 @@ Page({
       console.log(res)
     })
 
-
+    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -38,6 +38,7 @@ Page({
         })
       }
     } else {
+      
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
@@ -51,93 +52,5 @@ Page({
     }
     
   },
-  getUserInfo: function(e) {
-    let _this=this;
-   
-    if (e.detail.userInfo){
-     
-      app.globalData.userInfo = e.detail.userInfo
-      this.setData({
-        userInfo: e.detail.userInfo,
-        hasUserInfo: true
-      });
-      _this.login()
-    }else{
-      
-    }
-    
-  },
-  onShow:function(){
-    
-  },
-  login:function(){
-    let _this = this;
-    let token = wx.getStorageSync('token');
-    console.log(token)
-    if(token){
-      WXAPI.checkToken(token).then(res => {
-        console.log(res)
-        if (res.code != 0) {
-          wx.removeStorageSync('token')
-          _this.login();
-        } else {
-    
-          wx.navigateBack();
-        }
-      })
-      
-    }else{
-      wx.login({
-        success: res => {
-          let data = {
-            code: res.code,
-            type: 2
-          }
-
-          WXAPI.login(data).then((res) => {
-            console.log(res)
-            if (res.code == 10000) {
-              _this.registerUser();
-              return;
-            }
-            if (res.code == 0) {
-              wx.setStorageSync('token', res.data.token);
-              wx.setStorageSync('uid', res.data.uid)
-
-              wx.navigateBack();
-              _this.login()
-            }
-            if (res.code != 0) {
-              return;
-            }
-          })
-        }
-      })
-    } 
-   
-   
-  },
-  registerUser:function(){
-    let _this=this;
-    wx.login({
-      success: res => {
-       
-        let code =res.code;
-        wx.getUserInfo({
-          success:res=>{
-            
-            let iv=res.iv;
-            let encryptedData = res.encryptedData;
-            WXAPI.register({
-              iv:iv,
-              code:code,
-              encryptedData:encryptedData
-            }).then(res=>{
-              _this.login();
-            })
-          }
-        })
-      }
-    })
-  }
+  
 })

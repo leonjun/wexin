@@ -1,8 +1,13 @@
 /* pages/address/address.wxss */
 /* @import "../../common/common.wxss"; */
+
+
 .addressLists{
-  text-align: center;
+  text-align: left;
+  padding: 20rpx;
+  font-size: 30rpx;
 }
+/* 底部新增 */
 .bottomAdd{
   position: fixed;
   bottom: 0;
@@ -28,4 +33,23 @@
   right: 48rpx;
   transform:rotate(45deg);
   top: 32rpx;
+}
+/* 地址列表 */
+.address{
+  font-size: 30rpx;
+  border-bottom: 2rpx solid #ccc;
+  position: relative;
+  padding: 30rpx 0;
+}
+.edit{
+  position: absolute;
+  right: 10rpx;
+  font-size: 30rpx;
+  top:60rpx;
+}
+.address-name text{
+  margin-right: 40rpx;
+}
+.address-deta{
+  margin-top: 20rpx;
 }

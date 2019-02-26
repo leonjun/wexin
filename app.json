@@ -1,16 +1,11 @@
 {
   "pages":[
-    "pages/about/about",
     "pages/index/index",
-    "pages/address-add/index",
-    "pages/address/address",
-    
-    
-    
-    "pages/logs/logs",
-    
     "pages/cart/cart",
-   
+    "pages/about/about",  
+    "pages/address-add/index",
+    "pages/address/address", 
+    "pages/logs/logs",
     "pages/authorize/authorize"
   ],
   "window":{

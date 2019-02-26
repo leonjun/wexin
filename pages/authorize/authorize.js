@@ -1,4 +1,6 @@
 // pages/authorize/authorize.js
+const WXAPI= require ('../../api/api.js')
+const app=getApp();
 Page({
 
   /**
@@ -62,5 +64,94 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getUserInfo: function (e) {
+    let _this = this;
+
+    if (e.detail.userInfo) {
+
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      });
+      _this.login()
+    } else {
+
+    }
+
+  },
+
+  login: function () {
+    let _this = this;
+    let token = wx.getStorageSync('token');
+    console.log(token)
+    if (token) {
+      WXAPI.checkToken(token).then(res => {
+        console.log(res)
+        if (res.code != 0) {
+          wx.removeStorageSync('token')
+          _this.login();
+        } else {
+
+          wx.reLaunch({
+            url: '/pages/index/index',
+          })
+        }
+      })
+
+    } else {
+      wx.login({
+        success: res => {
+          let data = {
+            code: res.code,
+            type: 2
+          }
+
+          WXAPI.login(data).then((res) => {
+            console.log(res)
+            if (res.code == 10000) {
+              _this.registerUser();
+              return;
+            }
+            if (res.code == 0) {
+              wx.setStorageSync('token', res.data.token);
+              wx.setStorageSync('uid', res.data.uid)
+
+              wx.navigateBack();
+              _this.login()
+            }
+            if (res.code != 0) {
+              return;
+            }
+          })
+        }
+      })
+    }
+
+
+  },
+  registerUser: function () {
+    let _this = this;
+    wx.login({
+      success: res => {
+
+        let code = res.code;
+        wx.getUserInfo({
+          success: res => {
+
+            let iv = res.iv;
+            let encryptedData = res.encryptedData;
+            WXAPI.register({
+              iv: iv,
+              code: code,
+              encryptedData: encryptedData
+            }).then(res => {
+              _this.login();
+            })
+          }
+        })
+      }
+    })
   }
 })

@@ -29,28 +29,45 @@ const request = (url, method, data, needDomain)=>{
   
 }
 module.exports={
-  
+  // 登陆
   login:(data)=>{
     
     return request("/user/wxapp/login", "POST", data, true)
   },
+  // 资产
   getAmount:(data)=>{
     return request("/user/amount", "GET", {token:data}, true)
   },
+  // 检查token
   checkToken:(data)=>{
     return request("/user/check-token","GET",{token:data},true)
   },
+  // 注册
   register: (data) => {
     return request('/user/wxapp/register/complex','post', data,true)
   },
+  // 查询手机号归属地
   getMobile:(phone)=>{
     return request('/common/mobile-segment/location', 'GET', { mobile:phone},false)
   },
+  // 获取所有收货地址
   getAllAddress:(token)=>{
     return request('/user/shipping-address/list','GET',token,true)
   },
+  // 新增地址
   adAddress:(data)=>{
     return request('/user/shipping-address/add', 'POST', data, true)
+  },
+  // 地址详情
+  getAddressDetail:(data)=>{
+    return request('/user/shipping-address/detail','GET',data,true)
+  },
+  //更新地址
+  updateAddress:(data)=>{
+    return request('/user/shipping-address/update','POST',data,true)
+  },
+  //删除地址
+  deleteAddress:(data)=>{
+    return request('/user/shipping-address/delete','post',data,true)
   }
-  
 }

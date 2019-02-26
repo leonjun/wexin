@@ -20,10 +20,10 @@ Page({
    */
   onLoad: function (options) {
     
-    console.log(this.data.canIUse)
+    
     
     if(app.globalData.userInfo){
-      console.log(111111111)
+      
       this.setData({
         userInfo: app.globalData.userInfo
       })
@@ -53,7 +53,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(wx.getStorageSync('token'));
+    
     WXAPI.getAmount(wx.getStorageSync('token')).then(res => {
       console.log(res)
     })
