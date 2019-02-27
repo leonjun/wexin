@@ -1,11 +1,80 @@
-<view class='page'>
-  <view class='user'>
+<view >
+   <view class='line'></view>
+  <view class='user page'>
+   
     <block>
       <image class='about-user-img' src='{{userInfo.avatarUrl}}'></image>
       <text class='nick-name'>{{userInfo.nickName}}</text>
     </block>
+    <view class='amount '>
+      <view bindtap='goAmountDetail' class='item'>
+        <view>余额</view>
+        <view>{{amounts.balance}}</view>
+      </view>
+      <view class='item'>
+        <view>积分</view>
+        <view>{{amounts.score}}</view>
+      </view>
+      <view class='item'>
+        <view>优惠券</view>
+        <view>{{amounts.totleConsumed}}</view>
+      </view>
+    </view>
   </view>
-  <view class='list-item triangle'>
-    <navigator url='/pages/address/address'>地址管理</navigator>
+  <view class='line'></view>
+  <view class='orders page'>
+      <view class='list-item list-item-oder triangle'>
+        <navigator url='/pages/address/address'>我的订单</navigator>
+      </view>
+      <view class='order-list'>
+        <view>
+          <view class='fa fa-money'></view>
+          <view>待付款</view>
+        </view>
+        <view>
+          <view class='fa fa-hand-paper-o'></view>
+          <view>待收货</view>
+        </view>
+
+        <view>
+          <view class='fa fa-truck'></view>
+          <view>待发货</view>
+        </view>
+
+        
+      
+          <view>
+            <view class='fa fa-handshake-o'></view>
+            <view>待评价</view>
+          </view>
+          <view>
+            <view class='fa fa-check-circle'></view>
+            <view>已完成</view>
+          </view>
+
+          <view>
+            <view class='fa fa-signing'></view>
+            <view>售后</view>
+          </view>
+      </view>
   </view>
+  <view class='line'></view>
+  <view class='page'>
+    <view class='list-item triangle'>
+      <navigator url='/pages/address/address'>地址管理</navigator>
+    </view>
+    <view class='list-item triangle'>
+      <navigator url='/pages/address/address'>资金明细</navigator>
+    </view>
+    <view class='list-item triangle'>
+      <navigator url='/pages/address/address'>每日签到</navigator>
+    </view>
+    <view class='list-item triangle'>
+      <navigator url='/pages/address/address'>积分兑换</navigator>
+    </view>
+    <view class='list-item triangle'>
+      <navigator url='/pages/address/address'>优惠券</navigator>
+    </view>
+  </view>
+  
 </view>

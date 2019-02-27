@@ -12,7 +12,8 @@ Page({
   data: {
     userInfo:"",
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    amounts:""
   },
 
   /**
@@ -55,6 +56,11 @@ Page({
   onShow: function () {
     
     WXAPI.getAmount(wx.getStorageSync('token')).then(res => {
+      if(res.code==0){
+        this.setData({
+          amounts:res.data
+        })
+      }
       console.log(res)
     })
   },
@@ -95,5 +101,10 @@ Page({
   },
   onGotUserInfo: function (res) {
     console.log(res)
+  },
+  goAmountDetail:function(){
+    wx.navigateTo({
+      url: '/pages/amount/amount-detail',
+    })
   }
 })

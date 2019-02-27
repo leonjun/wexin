@@ -14,7 +14,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let token = wx.getStorageSync('token');
+    console.log(token)
+    if (token) {
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
+    }
   },
 
   /**
@@ -49,7 +55,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+   
   },
 
   /**
@@ -93,7 +99,6 @@ Page({
           wx.removeStorageSync('token')
           _this.login();
         } else {
-
           wx.reLaunch({
             url: '/pages/index/index',
           })

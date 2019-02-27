@@ -10,3 +10,8 @@
 .page{
   padding: 0 20rpx;
 }
+.line{
+  height: 10rpx;
+  width: 100%;
+  background-color: #ffb73a;
+}

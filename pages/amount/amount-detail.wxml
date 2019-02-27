@@ -1,0 +1,27 @@
+<!--pages/amount/amount-detail.wxml-->
+<view>
+  <view class='detail-box'>
+    <view class='amount-detail'>
+      <view class='amount-detail-item'>
+        <view>可用余额</view>
+        <view></view>
+      </view>
+      <view class='amount-detail-item'>
+        <view>冻结金额</view>
+        <view></view>
+      </view>
+      <view class='amount-detail-item'>
+        <view>累计消费</view>
+        <view></view>
+      </view>
+    </view>
+  </view>
+  <view class='btns'>
+    <form bindsubmit='recharge'>
+      <button size='mini'>充值</button>
+    </form>
+    <form bindsubmit='forCash'>
+      <button size='mini'>提现</button>
+    </form>
+  </view>
+</view>
