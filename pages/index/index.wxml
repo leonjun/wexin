@@ -1,29 +1,15 @@
 <!--index.wxml-->
-<view class="container">
+<view class="indexp">
+
+
+<swiper indicator-dots='true' autoplay='true' circular='true' class='banners'>
+  <block wx:for="{{bannerlist}}" wx:key="{{index}}">
+    <swiper-item>
+       <image mode='aspectFit' src='{{item.picUrl}}'></image>
+    </swiper-item>
+  </block>
+</swiper>
+
   
-    <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">        开始使用
-    </button>
- 
-  <view wx:else>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    <text>123132312</text>
-  </view> -->
-
-
-  <view wx:if="{{!hasUserInfo}}">
-    <button  open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    
-  </view>
-  <view wx:else>
-      <view  class="userinfo">
-        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </view>
-      
-      <view>
-         <text class="userinfo-nickname">{{motto}}</text>
-      </view>
-  </view>
   
 </view>

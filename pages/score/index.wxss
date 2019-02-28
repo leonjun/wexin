@@ -5,7 +5,7 @@
   padding: 36rpx;
 }
 .amount-detail{
-  display: flex;
+ 
   
 }
 .amount-detail-item{

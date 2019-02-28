@@ -1,4 +1,4 @@
-// pages/amount/amount-detail.js
+// pages/score/index.js
 const WXAPI = require('../../api/api.js')
 Page({
 
@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
@@ -28,36 +28,31 @@ Page({
    */
   onShow: function () {
     let token=wx.getStorageSync('token');
-    if(!token){
-      wx.navigateTo({
-        url: '/pages/authorize/authorize',
-      })
-    }
-    WXAPI.getAmount(token).then(res=>{
+    WXAPI.getAmount(token).then(res => {
       console.log(res)
-      if(res.code !=0){
+      if (res.code != 0) {
         wx.showModal({
           title: '错误',
           content: '',
         })
-      }else{
+      } else {
         this.setData({
           details: res.data
         })
       }
     });
-    let data={
+    let data = {
       token: token,
       page: 1,
       pageSize: 50
     }
-    WXAPI.getCashLog(data).then(res=>{
-      if(res.code==0){
+    WXAPI.scoreRecord(data).then(res => {
+      console.log(res)
+      if (res.code == 0) {
         this.setData({
-          cashLogs:res.data
+          scorelist: res.data
         })
       }
-      
     })
   },
 
@@ -94,18 +89,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  recharge:function(){
-    wx.showModal({
-      title: '提示',
-      content: '充值就算了',
-    })
-  },
-  forCash:function(){
-    wx.navigateTo({
-      url: '/pages/cash/getcash',
-    })
-  },
-  
-  
+  }
 })

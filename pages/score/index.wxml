@@ -1,0 +1,24 @@
+<!--pages/amount/amount-detail.wxml-->
+<view>
+  <view class='detail-box'>
+    <view class='amount-detail'>
+      <view class='amount-detail-item'>
+        <view>可用积分</view>
+        <view>{{details.score}}</view>
+      </view>
+      
+    </view>
+    
+  </view>
+  <view class='cashLogs'>
+    <view wx:for='{{scorelist.result}}' wx:key="{{index}}" class='cash-log-item'>
+      <view class='cash-log'>
+        <view>{{item.typeStr}}</view>
+        <view>{{item.dateAdd}}</view>
+      </view>
+      <view class='cash-log-amount'>
+        {{(item.behavior==1)?'-':'+'}}{{item.score}}
+      </view>
+    </view>
+  </view>
+</view>

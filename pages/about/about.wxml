@@ -11,7 +11,7 @@
         <view>余额</view>
         <view>{{amounts.balance}}</view>
       </view>
-      <view class='item'>
+      <view bindtap='goScoreDetail' class='item'>
         <view>积分</view>
         <view>{{amounts.score}}</view>
       </view>
@@ -24,7 +24,7 @@
   <view class='line'></view>
   <view class='orders page'>
       <view class='list-item list-item-oder triangle'>
-        <navigator url='/pages/address/address'>我的订单</navigator>
+        <navigator url='/pages/orders/index'>我的订单</navigator>
       </view>
       <view class='order-list'>
         <view>
@@ -73,7 +73,7 @@
       <navigator url='/pages/address/address'>积分兑换</navigator>
     </view>
     <view class='list-item triangle'>
-      <navigator url='/pages/address/address'>优惠券</navigator>
+      <navigator url='/pages/address/address'>领取优惠券</navigator>
     </view>
   </view>
   

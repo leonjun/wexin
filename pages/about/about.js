@@ -56,12 +56,20 @@ Page({
   onShow: function () {
     
     WXAPI.getAmount(wx.getStorageSync('token')).then(res => {
+      
       if(res.code==0){
         this.setData({
           amounts:res.data
         })
+      }else{
+        wx.showModal({
+          title: '错误',
+          content: res.msg,
+        })
       }
-      console.log(res)
+      
+    }).catch(err=>{
+      console.log(err)
     })
   },
 
@@ -105,6 +113,11 @@ Page({
   goAmountDetail:function(){
     wx.navigateTo({
       url: '/pages/amount/amount-detail',
+    })
+  },
+  goScoreDetail:function(){
+    wx.navigateTo({
+      url: '/pages/score/index',
     })
   }
 })

@@ -1,4 +1,4 @@
-// pages/amount/amount-detail.js
+// pages/cash/getcash.js
 const WXAPI = require('../../api/api.js')
 Page({
 
@@ -20,45 +20,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let token=wx.getStorageSync('token');
-    if(!token){
-      wx.navigateTo({
-        url: '/pages/authorize/authorize',
-      })
-    }
-    WXAPI.getAmount(token).then(res=>{
-      console.log(res)
-      if(res.code !=0){
-        wx.showModal({
-          title: '错误',
-          content: '',
-        })
-      }else{
-        this.setData({
-          details: res.data
-        })
-      }
-    });
-    let data={
-      token: token,
-      page: 1,
-      pageSize: 50
-    }
-    WXAPI.getCashLog(data).then(res=>{
-      if(res.code==0){
-        this.setData({
-          cashLogs:res.data
-        })
-      }
-      
-    })
+
   },
 
   /**
@@ -95,17 +64,41 @@ Page({
   onShareAppMessage: function () {
 
   },
-  recharge:function(){
-    wx.showModal({
-      title: '提示',
-      content: '充值就算了',
+  submitCash:function(e){
+    console.log(e)
+    let data={
+      money:e.detail.value.money,
+      token:wx.getStorageSync('token')
+    }
+    if (e.detail.value.money==0){
+      wx.showModal({
+        title: '提示',
+        content: '请输入金额',
+        showCancel: false,
+      })
+      return;
+    }
+    WXAPI.applyCash(data).then(res=>{
+      console.log(res)
+      if(res.code==0){
+        wx.showModal({
+          title: '提示',
+          content: '申请提现成功',
+          showCancel:false,
+          success:function(re){
+            if(re.confirm){
+              wx.navigateBack({
+                delta:1
+              })
+            }
+          }
+        })
+      }else{
+        wx.showModal({
+          title: '错误',
+          content: res.msg,
+        })
+      }
     })
-  },
-  forCash:function(){
-    wx.navigateTo({
-      url: '/pages/cash/getcash',
-    })
-  },
-  
-  
+  }
 })

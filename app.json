@@ -1,13 +1,14 @@
 {
   "pages":[
-    "pages/about/about",
-    
-    "pages/authorize/authorize",
     "pages/index/index",
+    "pages/about/about",
+    "pages/cash/getcash",
+    "pages/authorize/authorize",
     
+    "pages/score/index",
     "pages/amount/amount-detail",
     "pages/cart/cart",
-    
+    "pages/orders/index",
     "pages/address-add/index",
     "pages/address/address", 
     "pages/logs/logs"

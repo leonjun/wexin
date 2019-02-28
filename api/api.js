@@ -69,5 +69,21 @@ module.exports={
   //删除地址
   deleteAddress:(data)=>{
     return request('/user/shipping-address/delete','post',data,true)
+  },
+  //资金流水
+  getCashLog:(data)=>{
+    return request('/user/cashLog','post',data,true)
+  },
+  //提现申请
+  applyCash:(data)=>{
+    return request('/user/withDraw/apply','post',data,true)
+  },
+  //积分记录
+  scoreRecord: (data) => {
+    return request('/score/logs', 'post', data, true)
+  },
+  //banner
+  bannerlist:(data)=>{
+    return request('/banner/list','get',data,true)
   }
 }

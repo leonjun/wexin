@@ -1,0 +1,11 @@
+<!--pages/cash/getcash.wxml-->
+<view class='cash'>
+  <form bindsubmit='submitCash'>
+    <view class='cash-input'>
+      <input type='number' name="money" placeholder='请输入提现金额'></input>
+    </view>
+    <view>
+      <button form-type='submit' type='primary'>确认</button>
+    </view>
+  </form>
+</view>
