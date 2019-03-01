@@ -1,4 +1,7 @@
 /**index.wxss**/
+page{
+   background-color: rgb(240, 240, 240);
+}
 .indexp{
   width: 750rpx;
 }
@@ -8,4 +11,64 @@ swiper-item image{
 }
 .banners{
   height:562.5rpx;
+}
+.goods-lists{
+  display: flex;
+}
+.good-item{
+  flex: 0 0 20%;
+  text-align: center;
+  
+  font-size: 26rpx;
+  
+}
+.good-item view{
+  padding: 16rpx 0;
+}
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+scroll-view{
+  
+  background-color:#fff;
+}
+.goods{
+  padding: 26rpx;
+}
+.goods-show{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.goods-show-list{
+  
+  width: 320rpx;
+  height:470rpx;
+  background-color: #fff;
+  margin-bottom: 26rpx;
+}
+.goods-show-list image{
+  width: 320rpx;
+  height: 320rpx;
+}
+.good-name{
+  font-size: 30rpx;
+  margin: 20rpx 0 20rpx 30rpx;
+}
+.good-price{
+  font-size: 24rpx;
+  position: relative;
+  padding: 0 30rpx;
+}
+.good-new-price{
+  color: red;
+}
+.good-old-price{
+  color: #ccc;
+  position: absolute;
+  right: 30rpx;
+  top:0;
+  text-decoration: line-through;
 }

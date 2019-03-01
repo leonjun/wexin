@@ -8,14 +8,17 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    page:1,
+    pageSize:20,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
   
   onLoad: function () {
+    let _this=this
     let token=wx.getStorageSync('token');
-    WXAPI.bannerlist('token').then(res=>{
-      console.log(res)
+    WXAPI.bannerlist(token).then(res=>{
+      
       if(res.code==0){
         this.setData({
           bannerlist:res.data
@@ -26,12 +29,72 @@ Page({
           content: res.msg,
           showCancel:false
         })
+        return;
       }
+    });
+    WXAPI.getGoodsCategory(token).then(res=>{
+      console.log(res)
+      let categorys=[
+        {
+          id: 0, name: "全部"
+        }
+      ]
+      if(res.code==0){
+        for(let i=0;i<res.data.length;i++){
+          categorys.push(res.data[i])
+        }  
+        this.setData({
+          categorys: categorys,
+          hasGood:true
+        })
+       
+      }else if(res.code==700){
+        this.setData({
+          hasGood: false
+        })
+      } else{
+        wx.showModal({
+          title: '提示',
+          content: res.msg,
+        })
+        return;
+      }
+      _this.getGoods(0);
     })
-
-    
-   
     
   },
-  
+  getGoods: function (categoryId){
+    let _this=this;
+    let token = wx.getStorageSync('token');
+    let data = {
+      categoryId: categoryId,
+      token: token,
+      page: this.data.page,
+      pageSize: this.data.pageSize
+    }
+    WXAPI.getGoodsList(data).then(res => {
+      console.log(res)
+      if (res.code == 0) {
+        _this.setData({
+          allGoods: res.data,
+          hasGood:true
+        })
+      } else if (res.code == 700) {
+        this.setData({
+          hasGood: false
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: res.msg,
+        })
+      }
+
+    })
+  },
+  changeCategory:function(e){
+    console.log(e)
+    let id = e.currentTarget.dataset.id;
+    this.getGoods(id)
+  }
 })

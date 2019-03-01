@@ -85,5 +85,13 @@ module.exports={
   //banner
   bannerlist:(data)=>{
     return request('/banner/list','get',data,true)
+  },
+  //商品类别
+  getGoodsCategory:(data)=>{
+    return request('/shop/goods/category/all','get',data,true)
+  },
+  //商品列表
+  getGoodsList:(data)=>{
+    return request('/shop/goods/list','post',data,true)
   }
 }
