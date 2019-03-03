@@ -4,7 +4,7 @@
     "pages/about/about",
     "pages/cash/getcash",
     "pages/authorize/authorize",
-    
+    "pages/goods/goodsdetail",
     "pages/score/index",
     "pages/amount/amount-detail",
     "pages/cart/cart",

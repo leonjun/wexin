@@ -8,6 +8,7 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    activeId:0,
     page:1,
     pageSize:20,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -33,7 +34,7 @@ Page({
       }
     });
     WXAPI.getGoodsCategory(token).then(res=>{
-      console.log(res)
+      
       let categorys=[
         {
           id: 0, name: "全部"
@@ -93,8 +94,20 @@ Page({
     })
   },
   changeCategory:function(e){
-    console.log(e)
     let id = e.currentTarget.dataset.id;
-    this.getGoods(id)
-  }
+    this.setData({
+      activeId:id
+    })
+   
+    this.getGoods(id);
+    
+  },
+  toDetail:function(e){
+    
+    wx.navigateTo({
+      url: '/pages/goods/goodsdetail?id=' + e.currentTarget.dataset.id,
+    })
+   
+  },
+
 })

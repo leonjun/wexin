@@ -93,5 +93,9 @@ module.exports={
   //商品列表
   getGoodsList:(data)=>{
     return request('/shop/goods/list','post',data,true)
+  },
+  //商品详情
+  getGoodsDetail:(data)=>{
+    return request('/shop/goods/detail','get',data,true)
   }
 }

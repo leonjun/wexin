@@ -22,6 +22,9 @@ swiper-item image{
   font-size: 26rpx;
   
 }
+.good-item .active{
+  border-bottom: 2rpx solid red;
+}
 .good-item view{
   padding: 16rpx 0;
 }
@@ -44,14 +47,14 @@ scroll-view{
 }
 .goods-show-list{
   
-  width: 320rpx;
+  width: 336rpx;
   height:470rpx;
   background-color: #fff;
   margin-bottom: 26rpx;
 }
 .goods-show-list image{
-  width: 320rpx;
-  height: 320rpx;
+  width: 336rpx;
+  height: 336rpx;
 }
 .good-name{
   font-size: 30rpx;
@@ -71,4 +74,9 @@ scroll-view{
   right: 30rpx;
   top:0;
   text-decoration: line-through;
+}
+.hasNoGoods{
+  text-align: center;
+  padding-top: 40rpx;
+  font-size: 32rpx;
 }
