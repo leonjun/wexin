@@ -1,0 +1,11 @@
+<!--pages/discount/index.wxml-->
+<view>
+  <view>
+    <view wx:for="{{disCountData}}">
+    <view>{{item.name}}</view>
+      <view>￥{{item.money}}</view>
+      <view>满{{item.moneyHreshold}}可用</view>
+      <view>{{item.dateStart}}-{{item.dateEnd}}</view>
+    </view>
+  </view>
+</view>

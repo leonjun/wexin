@@ -1,12 +1,12 @@
 <!--pages/address/address.wxml-->
 <view>
   <view class='addressLists'>
-    <!-- <view wx:if="{{addressLists=='无'}}">
-      <text>暂无数据</text>
+    <view wx:if="{{addressLists=='无'}}">
+      
      
-    </view> -->
+    </view>
    
-    <view>
+    <view wx:else>
        <view class='address' wx:for="{{addressLists}}" wx:key="{{index}}">
           <view class='address-name'>
             <text>{{item.linkMan}}</text>

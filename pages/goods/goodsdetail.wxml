@@ -1,2 +1,25 @@
 <!--pages/goods/goodsdetail.wxml-->
-<text>pages/goods/goodsdetail.wxml</text>
+<import src="../../wxParse/wxParse.wxml"/>
+<swiper indicator-dots='true' class='banners' bindchange="changeS">
+  <block wx:for="{{details.pics}}" wx:key="{{index}}">
+    <swiper-item>
+       <image mode='aspectFit' src='{{item.pic}}'></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class='price-title'>
+  <view class='title'>{{details.basicInfo.name}}</view>
+  <view class='detail-price'>
+    <text class='good-new-price'>￥{{details.basicInfo.minPrice}}</text>
+    <text class='good-old-price'>￥{{details.basicInfo.originalPrice}}</text>
+  </view>
+</view>
+<view class='line'></view>
+<view class='goods-show'>
+  <view>商品介绍</view>
+  <view>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+
+</view>

@@ -1,1 +1,20 @@
 /* pages/cart/cart.wxss */
+.nogoods{
+  padding-top: 200rpx;
+  text-align: center;
+
+}
+.toindex{
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  background-color: red;
+  color: white;
+  margin: 30rpx auto;
+  border-radius: 10rpx;
+}
+.fa-shopping-cart{
+  font-size: 100rpx;
+  color: rgb(240, 240, 240);
+}

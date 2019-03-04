@@ -1,9 +1,10 @@
 {
   "pages":[
+    "pages/authorize/authorize",
     "pages/index/index",
     "pages/about/about",
     "pages/cash/getcash",
-    "pages/authorize/authorize",
+    "pages/discount/index",
     "pages/goods/goodsdetail",
     "pages/score/index",
     "pages/amount/amount-detail",

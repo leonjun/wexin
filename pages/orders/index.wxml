@@ -1,2 +1,14 @@
 <!--pages/orders/index.wxml-->
-<text>pages/orders/index.wxml</text>
+<view>
+  <view class='statusType'>
+    <view wx:for="{{statusType}}" bindtap='changeType' class="{{index==currentType?'active':''}}" wx:key="{{index}}" data-id='{{index}}'>
+      {{item}}
+    </view>
+  </view>
+  <view wx:if="{{hasOrder}}">
+
+  </view>
+  <view wx:else>
+    暂无订单
+  </view>
+</view>

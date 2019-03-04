@@ -1,2 +1,22 @@
 <!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+<view>
+  <view wx:if="{{iscart}}">
+    ok
+  </view>
+  <view wx:else class='nogoods'>
+    <view>
+      <view class='fa fa-shopping-cart'></view>
+      <view>
+        emmm~~~空空伊
+      </view>
+      
+    </view>
+    <view class='toindex' bindtap='toindex'>
+      
+        去逛逛
+      
+      
+    </view>
+  </view>
+ 
+</view>

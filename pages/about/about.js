@@ -13,7 +13,8 @@ Page({
     userInfo:"",
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    amounts:""
+    amounts:"",
+    disCount:0
   },
 
   /**
@@ -54,17 +55,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    WXAPI.myDiscount({status:0,token:wx.getStorageSync('token')}).then(res=>{
+      if(res.code==0){
+        this.setData({
+          disCount:res.data.length,
+          disCountData:res.data
+        })
+      }     
+    })
     WXAPI.getAmount(wx.getStorageSync('token')).then(res => {
       
       if(res.code==0){
         this.setData({
           amounts:res.data
         })
-      }else{
+      }else if(res.code==2000){
+        wx.redirectTo({
+          url: '/pages/authorize/authorize',
+        })
         wx.showModal({
           title: '错误',
-          content: res.msg,
+          content: res.msg+res.code,
         })
       }
       
@@ -118,6 +129,18 @@ Page({
   goScoreDetail:function(){
     wx.navigateTo({
       url: '/pages/score/index',
+    })
+  },
+  toOrder:function(e){
+    console.log(e)
+    let type = e.currentTarget.dataset.type;
+    wx.navigateTo({
+      url: '/pages/orders/index?id='+type,
+    })
+  },
+  goDiscount:function(){
+    wx.navigateTo({
+      url: '/pages/discount/index'
     })
   }
 })

@@ -5,14 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    statusType: ["待付款", "待发货", "待收货", "待评价", "已完成"],
+    currentType:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    if (options){
+      this.setData({
+        currentType: options.id
+      })
+    }
   },
 
   /**
@@ -62,5 +68,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  changeType:function(e){
+    console.log(e);
+    this.setData({
+      currentType: e.target.dataset.id
+    })
+    
   }
 })

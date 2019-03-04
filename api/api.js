@@ -97,5 +97,8 @@ module.exports={
   //商品详情
   getGoodsDetail:(data)=>{
     return request('/shop/goods/detail','get',data,true)
+  },
+  myDiscount:(data)=>{
+    return request('/discounts/my','get',data,true)
   }
 }

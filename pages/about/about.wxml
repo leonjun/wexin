@@ -15,9 +15,9 @@
         <view>积分</view>
         <view>{{amounts.score}}</view>
       </view>
-      <view class='item'>
+      <view bindtap='goDiscount' class='item'>
         <view>优惠券</view>
-        <view>{{amounts.totleConsumed}}</view>
+        <view>{{disCount}}</view>
       </view>
     </view>
   </view>
@@ -27,27 +27,27 @@
         <navigator url='/pages/orders/index'>我的订单</navigator>
       </view>
       <view class='order-list'>
-        <view>
+        <view bindtap='toOrder' data-type='0'>
           <view class='fa fa-money'></view>
           <view>待付款</view>
         </view>
-        <view>
+        <view bindtap='toOrder' data-type='2'>
           <view class='fa fa-hand-paper-o'></view>
           <view>待收货</view>
         </view>
 
-        <view>
+        <view bindtap='toOrder' data-type='1'>
           <view class='fa fa-truck'></view>
           <view>待发货</view>
         </view>
 
         
       
-          <view>
+          <view bindtap='toOrder' data-type='3'>
             <view class='fa fa-handshake-o'></view>
             <view>待评价</view>
           </view>
-          <view>
+          <view bindtap='toOrder' data-type='4'>
             <view class='fa fa-check-circle'></view>
             <view>已完成</view>
           </view>
@@ -64,16 +64,16 @@
       <navigator url='/pages/address/address'>地址管理</navigator>
     </view>
     <view class='list-item triangle'>
-      <navigator url='/pages/address/address'>资金明细</navigator>
+      <navigator url='/pages/amount/amount-detail'>资金明细</navigator>
     </view>
     <view class='list-item triangle'>
-      <navigator url='/pages/address/address'>每日签到</navigator>
+      <navigator>每日签到</navigator>
     </view>
     <view class='list-item triangle'>
-      <navigator url='/pages/address/address'>积分兑换</navigator>
+      <navigator>积分兑换</navigator>
     </view>
     <view class='list-item triangle'>
-      <navigator url='/pages/address/address'>领取优惠券</navigator>
+      <navigator>领取优惠券</navigator>
     </view>
   </view>
   
