@@ -100,5 +100,9 @@ module.exports={
   },
   myDiscount:(data)=>{
     return request('/discounts/my','get',data,true)
+  },
+  //订单列表
+  orderList:(data)=>{
+    return request('/order/list','post',data,true)
   }
 }

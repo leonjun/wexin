@@ -99,5 +99,15 @@ Page({
   },
   changeS:function(e){
     console.log(e)
+  },
+  toCart:function(){
+    wx.switchTab({
+      url: '/pages/cart/cart',
+    })
+  },
+  //添加购物车
+  addCart:function(){
+    console.log(this.data.details)
+    wx.setStorage('carts', this.data.details)
   }
 })

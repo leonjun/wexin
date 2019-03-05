@@ -1,1 +1,21 @@
 /* pages/discount/index.wxss */
+.discount{
+  padding: 30rpx;
+}
+.discount-list{
+  padding: 30rpx;
+  background-color: #ffb73a;
+   background: linear-gradient(#ad6e01,#e79302);
+   color: #fff;
+   margin-bottom: 30rpx;
+   font-size: 32rpx;
+}
+.discount-list>view{
+  margin-bottom: 5rpx;
+}
+.discount-date{
+  font-size: 24rpx;
+}
+.discount-money{
+  font-size: 38rpx;
+}

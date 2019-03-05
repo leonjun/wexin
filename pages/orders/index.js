@@ -1,4 +1,5 @@
 // pages/orders/index.js
+const WXAPI = require('../../api/api.js')
 Page({
 
   /**
@@ -14,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    if (options){
+    if (options.id){
       this.setData({
         currentType: options.id
       })
@@ -25,14 +26,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getOrderList()
   },
 
   /**
@@ -73,7 +74,28 @@ Page({
     console.log(e);
     this.setData({
       currentType: e.target.dataset.id
+    });
+    this.getOrderList()
+  },
+  getOrderList:function(){
+    let data={
+      status:this.data.currentType,
+      token:wx.getStorageSync('token')
+    }
+    WXAPI.orderList(data).then(res=>{
+      if(res.code==0){
+        this.setData({
+          order: res.data.orderList,
+          pics: res.data.goodsMap,
+          hasOrder:true
+        })
+      }else{
+        this.setData({
+          order:"",
+          hasOrder: false
+        })
+      }
+      console.log(res)
     })
-    
   }
 })

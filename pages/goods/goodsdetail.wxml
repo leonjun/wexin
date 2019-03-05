@@ -23,3 +23,29 @@
   </view>
 
 </view>
+<view class='add-cart'>
+   <view class='fix-bottom'>
+
+      <view class='left'>
+      
+     
+        <view>
+          <view class='fa fa-commenting-o'></view>
+          <view>联系客服</view>
+        </view>
+        <view bindtap='toCart'>
+          <view class='fa fa-shopping-cart'></view>
+          <view>购物车</view>
+        </view>
+      </view>
+      <view class='right'>
+        <view bindtap='addCart'>
+        加入购物车
+        </view>
+        <view>立即购买</view>
+      </view>
+      
+
+
+   </view> 
+</view>

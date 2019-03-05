@@ -13,3 +13,45 @@
   font-size: 28rpx;
   line-height: 70rpx;
 }
+.order-box{
+  
+}
+.order-lists{
+  padding: 30rpx;
+  border-top:20rpx solid #ccc;
+  font-size: 24rpx;
+}
+.order-lists>view{
+  margin-bottom: 10rpx;
+}
+.order-lists image{
+  width: 130rpx;
+  height: 130rpx
+}
+.price{
+  color: red;
+  
+  overflow: hidden;
+}
+.price view{
+  line-height: 60rpx;
+}
+.price .p{
+  float: left;
+}
+.price .btn{
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 8rpx;
+  text-align: center;
+  float: right;
+  margin: 0 10rpx;
+}
+.price .cancle{
+  color: #ccc;
+}
+.price .pay{
+  border-color: red;
+}

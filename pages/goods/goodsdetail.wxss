@@ -39,3 +39,41 @@ swiper-item image{
 .goods-show{
   padding: 20rpx;
 }
+.add-cart{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100rpx;
+  font-size: 28rpx;
+  background-color: #fafafa;
+}
+.fix-bottom{
+  display: flex;
+}
+.fix-bottom>view{
+  flex: 0 0 50%;
+}
+.right{
+  line-height: 100rpx;
+  display: flex;
+}
+.right>view{
+  flex:0 0 50%;
+  text-align: center;
+  background-color: red;
+  color: white;
+}
+.right>view:last-child{
+  background-color: #ffb73a;
+}
+.left{
+  font-size: 24rpx;
+  height: 100rpx;
+  display: flex;
+}
+.left>view{
+  flex: 0 0 50%;
+  text-align: center;
+  margin-top: 16rpx;
+}
