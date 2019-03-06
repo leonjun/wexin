@@ -18,3 +18,28 @@
   font-size: 100rpx;
   color: rgb(240, 240, 240);
 }
+.cartlist{
+  padding: 30rpx;
+  border-top: 18rpx solid #ccc;
+  display: flex;
+}
+.message image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.number{
+  display: flex;
+}
+.number view{
+  width: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  
+  border: 2rpx solid #ccc;
+}
+.number input{
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 58rpx;
+}

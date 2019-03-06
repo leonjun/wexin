@@ -77,3 +77,46 @@ swiper-item image{
   text-align: center;
   margin-top: 16rpx;
 }
+.chose-number{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  font-size: 24rpx;
+}
+.addcart{
+  width: 100%;
+}
+.close{
+  text-align: right;
+  padding-right: 20rpx;
+  font-size: 32rpx;
+}
+.number{
+  display: flex;
+}
+.number view{
+  width: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  
+  border: 2rpx solid #ccc;
+}
+.number input{
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 58rpx;
+}
+.number text{
+  line-height: 60rpx;
+  margin: 0 20rpx 0 50rpx;
+}
+.bk{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(143, 142, 142, 0.7);
+}

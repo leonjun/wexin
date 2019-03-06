@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    discount:0,
+    moneys:0
   },
 
   /**
@@ -27,12 +28,43 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.getStorage({
-      key: 'carts',
-      success: function(res) {
-        console.log(res)
-      },
-    })
+    let lists=wx.getStorageSync('carts');
+    let _this=this;
+    let count=0,money=0
+    console.log(lists)
+    if (lists){
+      for (let i = 0; i < lists.length; i++) {
+        console.log((lists[i].count) * (lists[i].minPrice) + '+' + (lists[i].minScore) * (lists[i].count))
+        money += (lists[i].count) * (lists[i].minPrice) ;
+        count += (lists[i].minScore) * (lists[i].count);
+      }
+      
+      this.setData({
+        cartlist: lists,
+        iscart:true,
+        discount: count,
+        moneys: money
+      })
+    }else{
+      this.setData({
+        cartlist: "",
+        iscart: false,
+        discount: 0,
+        moneys: 0
+      })
+    }
+    // wx.getStorage({
+    //   key: 'carts',
+    //   success: function(res) {
+    //     console.log(res)
+    //   },
+    // })
+    // wx.removeStorage({
+    //   key:"carts",
+    //   success:function(res){
+    //     console.log(res)
+    //   }
+    // })
   },
 
   /**
@@ -73,5 +105,11 @@ Page({
     wx.switchTab({
       url: '/pages/index/index',
     })
+  },
+  plus:function(e){
+    console.log(e)
+  },
+  minus:function(e){
+
   }
 })

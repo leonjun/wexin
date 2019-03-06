@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isshow:false,
+    number:0,
+    cartdata:[]
   },
 
   /**
@@ -106,8 +108,110 @@ Page({
     })
   },
   //添加购物车
-  addCart:function(){
+  addcart:function(){
+    let _this=this;
     console.log(this.data.details)
-    wx.setStorage('carts', this.data.details)
+    let num = this.data.number;
+    if(num<=0){
+      wx.showModal({
+        title: '错误',
+        content: '请选择商品数量',
+        showCancel:false
+      })
+      return;
+    }
+    let deta = this.data.details.basicInfo;
+    let count = this.data.number;
+    let data=[{
+      goodId: deta.id,
+      categoryId: deta.categoryId,
+      pic: deta.pic,
+      name: deta.name,
+      minPrice: deta.minPrice,
+      minScore: deta.minScore,
+      stores: deta.stores,
+      count:count
+    }]
+    let store = wx.getStorageSync('carts');
+    console.log(store)
+    if (store){
+      data=[...data,...store]
+    }
+    
+   // let data = this.data.details;
+    
+    wx.setStorage({ 
+      key: 'carts', 
+      data: data,
+      success:function(){
+        _this.setData({
+          isshow: false
+        });
+
+
+        wx.showToast({
+          title: '加入购物车成功',
+          success: function () {
+            _this.setData({
+              number: 0
+            })
+          }
+        })
+      }
+      });
+    
+    
+  },
+  toaddCart:function(){
+    this.setData({
+      isshow:true
+    })
+  },
+  close:function(){
+    this.setData({
+      isshow: false
+    })
+  },
+  
+  minu:function(e){
+    let num = this.data.number;
+    num--;
+    if(num<=0){
+      num=0;
+    }
+    this.setData({
+      number: num
+    })
+  },
+  plus:function(){
+    let num=this.data.number;
+    let max = this.data.details.basicInfo.stores;
+    
+    console.log(num);
+    console.log(max);
+    if (num < max) {
+      console.log(1111)
+      num++;
+      
+      this.setData({
+        number: num
+      })
+    }  
+  },
+  checknum:function(e){
+    let num = e.detail.value;
+    let max = this.data.details.basicInfo.stores;
+    
+    if(num>max){
+      num=max
+    }
+    this.setData({
+      number:num
+    })
+  },
+  focusnum:function(){
+    this.setData({
+      number:""
+    })
   }
 })
