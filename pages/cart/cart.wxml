@@ -2,30 +2,41 @@
 <view>
   
   <view wx:if="{{iscart}}">
-    <view>
+    <view style='padding-bottom:100rpx;'>
+      <checkbox-group bindchange="checkcart">
+      
+      
       <view class='cartlist' wx:for="{{cartlist}}" wx:key="{{index}}">
-        <checkbox value='{{item}}' />
+        <!-- <checkbox value='{{item}}' data-checked='{{item.checked}}' data-index="{{index}}" data-score='{{item.minScore}}' data-price='{{item.minPrice}}' data-count='{{item.count}}' checked='{{item.checked}}' /> -->
         <view class='message'>
           <view>
             <image src='{{item.pic}}'></image>
           </view>
-          <view>{{item.name}}</view>
-          <view>￥{{item.minPrice}}</view>
-          <view class='number'>
-            
-            <view bindtap='minu' data-da="{{item}}" class='minus'>-</view>
-            <view>
-              <input type='number' bindfocus="focusnum" bindblur="checknum" min="0" max="{{item.stores}}" name="num" value='{{item.count}}'></input>
+
+          <view>
+            <view class='good-name'>{{item.name}}</view>
+            <view class='good-price'>￥{{item.minPrice}}</view>
+            <view class='number'>
+              
+              <view bindtap='minus' data-da="{{index}}" class='minus'>-</view>
+              
+                <input type='number' disabled min="0" max="{{item.stores}}" name="num" value='{{item.number}}' />
+                      
+              <view bindtap='plus' data-da="{{index}}" class='plus'>+</view>
             </view>
-            
-            <view bindtap='plus' data-da="{{item}}" class='plus'>+</view>
           </view>
+
+          
         </view>
         
       </view>  
+      </checkbox-group>
+    
     </view>
     <view class='jiesuan'>
-     合计：￥{{moneys}}+{{discount}}积分
+      <view>合计：￥{{moneys}}+{{discount}}积分</view>
+     
+     <view bindtap='topay'>结算</view>
     </view>
   </view>
 

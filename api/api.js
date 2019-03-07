@@ -104,5 +104,9 @@ module.exports={
   //订单列表
   orderList:(data)=>{
     return request('/order/list','post',data,true)
+  },
+  //下单
+  createOrder:(data)=>{
+    return request('/order/create','post',data,true)
   }
 }

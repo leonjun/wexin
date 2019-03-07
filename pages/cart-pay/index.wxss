@@ -1,0 +1,77 @@
+/* pages/cart/cart.wxss */
+.nogoods{
+  padding-top: 200rpx;
+  text-align: center;
+
+}
+.toindex{
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  background-color: red;
+  color: white;
+  margin: 30rpx auto;
+  border-radius: 10rpx;
+}
+.fa-shopping-cart{
+  font-size: 100rpx;
+  color: rgb(240, 240, 240);
+}
+.cartlist{
+  padding: 30rpx;
+  border-top: 18rpx solid #ccc;
+  display: flex;
+}
+.message{
+  display: flex;
+  font-size: 26rpx;
+  width: 100%;
+  position: relative;
+}
+.message image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.message>view:last-child{
+  margin-left: 50rpx;
+  text-align: right;
+}
+.number{
+  position: absolute;
+  right: 0;
+  buttom:0;
+}
+
+.good-price{
+  margin: 28rpx 0;
+}
+.jiesuan{
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
+  border-top: 2rpx solid #ccc;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+ 
+}
+.jiesuan view:first-child{
+  flex: 0 0 70%;
+  text-align: center;
+  line-height: 100rpx;
+}
+.jiesuan view:last-child{
+  flex: 0 0 30%;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  padding: 30rpx 0;
+}
+.good-name{
+  overflow:hidden;
+  width:400rpx;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}

@@ -110,7 +110,7 @@ Page({
   //添加购物车
   addcart:function(){
     let _this=this;
-    console.log(this.data.details)
+    console.log(this.data.details.basicInfo.id)
     let num = this.data.number;
     if(num<=0){
       wx.showModal({
@@ -122,20 +122,43 @@ Page({
     }
     let deta = this.data.details.basicInfo;
     let count = this.data.number;
-    let data=[{
-      goodId: deta.id,
+    let data = [{
+      goodsId: deta.id,
       categoryId: deta.categoryId,
       pic: deta.pic,
       name: deta.name,
       minPrice: deta.minPrice,
       minScore: deta.minScore,
       stores: deta.stores,
-      count:count
-    }]
+      number: count
+    }];
+    
+    let id = this.data.details.basicInfo.id;
     let store = wx.getStorageSync('carts');
-    console.log(store)
+    
     if (store){
-      data=[...data,...store]
+      let flag=true;
+
+      let ss=store.map(item=>{
+        if (item.goodsId==id){
+          flag=false;
+
+          item.number++;
+          return Object.assign(item,{
+            number: item.number++
+          })
+          
+        }else{       
+          return item;
+        }
+      })
+      if(flag){
+        data=[...data,...ss];
+      }else{
+        data = ss;
+      }
+    }else{
+      
     }
     
    // let data = this.data.details;

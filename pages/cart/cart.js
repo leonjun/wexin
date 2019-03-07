@@ -31,12 +31,13 @@ Page({
     let lists=wx.getStorageSync('carts');
     let _this=this;
     let count=0,money=0
-    console.log(lists)
+   
     if (lists){
       for (let i = 0; i < lists.length; i++) {
-        console.log((lists[i].count) * (lists[i].minPrice) + '+' + (lists[i].minScore) * (lists[i].count))
-        money += (lists[i].count) * (lists[i].minPrice) ;
-        count += (lists[i].minScore) * (lists[i].count);
+       
+        money += (lists[i].number) * (lists[i].minPrice) ;
+        count += (lists[i].minScore) * (lists[i].number);
+        lists[i].checked=true;
       }
       
       this.setData({
@@ -53,18 +54,7 @@ Page({
         moneys: 0
       })
     }
-    // wx.getStorage({
-    //   key: 'carts',
-    //   success: function(res) {
-    //     console.log(res)
-    //   },
-    // })
-    // wx.removeStorage({
-    //   key:"carts",
-    //   success:function(res){
-    //     console.log(res)
-    //   }
-    // })
+  
   },
 
   /**
@@ -107,9 +97,60 @@ Page({
     })
   },
   plus:function(e){
-    console.log(e)
+    
+    let _this=this;
+    let index =e.currentTarget.dataset.da;
+    let list = _this.data.cartlist;
+    
+    let money =  (list[index].minPrice) + this.data.moneys;
+    let max = list[index].stores;
+    let count = (list[index].minScore) + this.data.discount;
+    
+    if (list[index].number<max){
+
+      list[index].number++;
+      this.setData({
+        cartlist: list,
+        moneys: money,
+        discount: count
+      });
+      wx.setStorageSync("carts", list)
+    }
+    //count += this.data.discount;
+    
   },
   minus:function(e){
-
+   
+    let _this = this;
+    let index = e.currentTarget.dataset.da;
+    let list = _this.data.cartlist;
+    let money = this.data.moneys, count = this.data.discount
+    if (list[index].number>1){
+       money = this.data.moneys -  (list[index].minPrice);
+      count = this.data.discount - (list[index].minScore);
+    }
+    
+    list[index].number--;
+    
+    
+    if (list[index].number<=1){
+      list[index].number=1
+    }
+    
+    this.setData({
+      cartlist: list,
+      moneys:money,
+      discount:count
+    });
+    wx.setStorageSync("carts", list)
+  },
+  checkcart:function(e){
+    console.log(e)
+    
+  },
+  topay:function(){
+    wx.navigateTo({
+      url: '/pages/cart-pay/index',
+    })
   }
 })
