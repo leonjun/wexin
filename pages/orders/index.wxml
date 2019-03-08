@@ -7,6 +7,7 @@
   </view>
   <view wx:if="{{hasOrder}}" class='order-box'>
       <view wx:for="{{order}}" wx:key="{{index}}" class='order-lists'>
+        <view hidden='{{item.status==0?false:true}}' class='close-time'>订单将在{{item.dateClose}}关闭</view>
         <view>下单时间：{{item.dateAdd}}</view>
         <view>订单号:{{item.orderNumber}}</view>
         <view>备注：{{item.remark}}</view>
@@ -14,17 +15,19 @@
           <image src='{{item.pic}}'></image>
         </view>
         <view class='price'>
-          <view class='p' wx:if="{{item.score>0}}">合计{{item.amountReal}}+{{item.score}}积分</view>
-          <view class='p' wx:else>合计{{item.amountReal}}</view>
-          <view class='btn pay' hidden='{{item.status==0?false:true}}'>马上付款</view>
-          <view class='btn cancle' hidden='{{item.status==0?false:true}}'>取消订单</view>
+          <view class='p' wx:if="{{item.score>0}}">合计：￥{{item.amountReal}}+{{item.score}}积分</view>
+          <view class='p' wx:else>合计：￥{{item.amountReal}}</view>
+          <view bindtap='paymoney' data-id='{{item.id}}' class='btn pay' hidden='{{item.status==0?false:true}}'>马上付款</view>
+          <view bindtap='closeorder' data-id='{{item.id}}' class='btn cancle' hidden='{{item.status==0?false:true}}'>取消订单</view>
           
         </view>
         
 
       </view>
   </view>
-  <view wx:else>
-    暂无订单
+  <view class='noOrder' wx:else>
+    <view class='fa fa-opencart'></view>
+    <view>暂无相关订单</view>
+    
   </view>
 </view>

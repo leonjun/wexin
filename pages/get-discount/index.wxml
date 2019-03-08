@@ -1,0 +1,18 @@
+<!--pages/get-discount/index.wxml-->
+<view>
+  <view wx:if="{{discountlist}}">
+    
+    <view class='discount' wx:for="{{discountlist}}" >
+      <view bindtap='getdiscount' class='discount-list' data-id='{{item.id}}'>
+        <view class='discount-name'>{{item.name}}</view>
+        
+        <view class='discount-hreshold'>满{{item.moneyHreshold}}可用</view>
+      </view>
+      
+      
+    </view>
+  </view>
+  <view wx:else>
+    赞无优惠券
+  </view>
+</view>

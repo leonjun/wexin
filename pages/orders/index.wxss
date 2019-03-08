@@ -55,3 +55,19 @@
 .price .pay{
   border-color: red;
 }
+.close-time{
+  color: red;
+  font-size: 28rpx;
+}
+.noOrder{
+  text-align: center;
+  padding-top: 100rpx;
+  font-size: 30rpx;
+}
+.noOrder .fa-opencart{
+  font-size: 100rpx;
+  color: rgb(238, 238, 238);
+}
+.noOrder view{
+  margin: 30rpx 0;
+}

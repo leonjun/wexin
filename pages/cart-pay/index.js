@@ -103,6 +103,18 @@ Page({
     }
     console.log(data)
     WXAPI.createOrder(data).then(res=>{
+      if(res.code==0){
+        wx.removeStorageSync('carts');
+        wx.redirectTo({
+          url: '/pages/orders/index',
+        })
+      }else{
+        wx.showModal({
+          title: '错误',
+          content: res.msg,
+          showCancel:false
+        })
+      }
       console.log(res)
     })
   }

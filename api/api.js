@@ -108,5 +108,21 @@ module.exports={
   //下单
   createOrder:(data)=>{
     return request('/order/create','post',data,true)
-  }
+  },
+  //订单付款
+  payorder:(data)=>{
+    return request('/order/pay','post',data,true)
+  },
+  //订单关闭
+  closeorder: (data) => {
+    return request('/order/close', 'post', data, true)
+  },
+  //优惠券列表
+  getDiscountList:(data)=>{
+    return request('/discounts/coupons','get',data,true)
+  },
+  getDiscount: (data) => {
+    return request('/discounts/fetch', 'post', data, true)
+  },
+  
 }

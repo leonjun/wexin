@@ -97,5 +97,65 @@ Page({
       }
       console.log(res)
     })
+  },
+  paymoney:function(e){
+    console.log(e)
+    let _this=this;
+    let id=e.currentTarget.dataset.id;
+    let token=wx.getStorageSync('token');
+    let data={
+      orderId:id,
+      token:token
+    }
+    WXAPI.payorder(data).then(res=>{
+      if(res.code==0){
+        wx.showModal({
+          title: '成功',
+          content: '付款成功',
+          showCancel:false,
+          success:function(res){
+            if(res.confirm){
+              _this.getOrderList()
+            }
+          }
+        })
+        
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: res.msg,
+          showCancel:false
+        })
+      }
+    })
+  },
+  closeorder:function(e){
+    let _this = this;
+    let id = e.currentTarget.dataset.id;
+    let token = wx.getStorageSync('token');
+    let data = {
+      orderId: id,
+      token: token
+    }
+    wx.showModal({
+      title: '提示',
+      content: '确认关闭该订单吗',
+      success:function(res){
+        if(res.confirm){
+          WXAPI.closeorder(data).then(res => {
+            if (res.code == 0) {
+              _this.getOrderList()
+            } else {
+              wx.showModal({
+                title: '提示',
+                content: res.msg,
+                showCancel: false
+              })
+            }
+          })
+        }
+      }
+    })
+    
   }
 })

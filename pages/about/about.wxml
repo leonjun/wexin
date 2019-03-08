@@ -73,7 +73,7 @@
       <navigator>积分兑换</navigator>
     </view>
     <view class='list-item triangle'>
-      <navigator>领取优惠券</navigator>
+      <navigator url='/pages/get-discount/index'>领取优惠券</navigator>
     </view>
   </view>
   

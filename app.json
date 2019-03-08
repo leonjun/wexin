@@ -6,6 +6,7 @@
     "pages/about/about",
     "pages/cash/getcash",
     "pages/discount/index",
+    "pages/get-discount/index",
     "pages/goods/goodsdetail",
     "pages/score/index",
     "pages/amount/amount-detail",
