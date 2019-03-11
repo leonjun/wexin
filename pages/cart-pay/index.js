@@ -14,7 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let app = getApp()
+    console.log(options)
+    this.setData({
+      type:options.type
+    })
 
   },
 
@@ -29,8 +32,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let lists = wx.getStorageSync('carts');
+    let lists=[];
     let _this = this;
+    
+    if (_this.data.type=='buynow'){
+      lists = wx.getStorageSync('buynow');
+    }else{
+      lists = wx.getStorageSync('carts');
+    }
+    //let lists = wx.getStorageSync('carts');
+    
     let count = 0, money = 0
     console.log(lists)
     if (lists) {

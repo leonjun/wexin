@@ -1,0 +1,22 @@
+<!--pages/mycollect/index.wxml-->
+<view>
+
+  <view wx:if="{{collections}}">
+    <view wx:for="{{collections}}" wx:key="{{index}}" class='collect'>
+      <view class='collect-list' bindtap='toGood' data-id='{{item.goodsId}}'>
+        <view>
+          <image src='{{item.pic}}'></image>
+        </view>
+        <view>
+          <text class='collect-name'>{{item.goodsName}}</text>
+        </view>
+        
+
+      </view>
+      
+    </view>
+  </view>
+  <view wx:else>
+    暂无收藏
+  </view>
+</view>

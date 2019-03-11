@@ -35,7 +35,7 @@ Page({
    */
   onShow: function () {
     this.getDetail();
-    
+    this.checkCollect();
     },
     
   /**
@@ -132,7 +132,7 @@ Page({
       stores: deta.stores,
       number: count
     }];
-    
+    let buydata=data;
     let id = this.data.details.basicInfo.id;
     let store = wx.getStorageSync('carts');
     
@@ -162,32 +162,55 @@ Page({
     }
     
    // let data = this.data.details;
+    if (_this.data.isAddCart){
+      wx.setStorage({
+        key: 'carts',
+        data: data,
+        success:function(){
+          _this.setData({
+            isshow: false
+          });
+          wx.showToast({
+            title: '加入购物车成功',
+            success: function () {
+              _this.setData({
+                number: 0
+              })
+            }
+          })
+        }
+      })
+    }
+    if (_this.data.isBuy) {
+      wx.setStorage({
+        key: 'buynow',
+        data: buydata,
+        success: function () {
+          _this.setData({
+            isshow: false
+          });
+          wx.navigateTo({
+            url: '/pages/cart-pay/index?type=' + 'buynow',
+          })
+        }
+      })
+    }
     
-    wx.setStorage({ 
-      key: 'carts', 
-      data: data,
-      success:function(){
-        _this.setData({
-          isshow: false
-        });
-
-
-        wx.showToast({
-          title: '加入购物车成功',
-          success: function () {
-            _this.setData({
-              number: 0
-            })
-          }
-        })
-      }
-      });
     
     
   },
   toaddCart:function(){
     this.setData({
-      isshow:true
+      isshow:true,
+      isAddCart:true,
+      isBuy:false
+    })
+  },
+  buynow:function(){
+    this.setData({
+      isshow: true,
+      isAddCart: false,
+      isBuy: true
     })
   },
   close:function(){
@@ -235,6 +258,49 @@ Page({
   focusnum:function(){
     this.setData({
       number:""
+    })
+  },
+  checkCollect:function(){
+    let data={
+      goodsId:this.data.id,
+      token:wx.getStorageSync('token')
+    }
+    WXAPI.collectCheck(data).then(res=>{
+      this.setData({
+        iscollect:res.data
+      })
+    })
+  },
+  collect:function(e){
+    console.log(e.currentTarget.dataset.id)
+    let goodsId = e.currentTarget.dataset.id;
+    let data={
+      goodsId: goodsId,
+      token:wx.getStorageSync('token')
+    }
+    WXAPI.collectGood(data).then(res=>{
+      console.log(res);
+      if(res.code==0){
+        this.setData({
+          iscollect:"已收藏"
+        })
+      }
+    })
+  },
+  canclecollect:function(e){
+    
+    let goodsId = e.currentTarget.dataset.id;
+    let data = {
+      goodsId: goodsId,
+      token: wx.getStorageSync('token')
+    }
+    WXAPI.deleteCollect(data).then(res => {
+     
+      if (res.code == 0) {
+        this.setData({
+          iscollect: "未收藏"
+        })
+      }
     })
   }
 })

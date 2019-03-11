@@ -52,10 +52,10 @@
             <view>已完成</view>
           </view>
 
-          <view>
+          <!-- <view>
             <view class='fa fa-signing'></view>
             <view>售后</view>
-          </view>
+          </view> -->
       </view>
   </view>
   <view class='line'></view>
@@ -67,11 +67,14 @@
       <navigator url='/pages/amount/amount-detail'>资金明细</navigator>
     </view>
     <view class='list-item triangle'>
+      <navigator url='/pages/mycollect/index'>我的收藏</navigator>
+    </view>
+    <!-- <view class='list-item triangle'>
       <navigator>每日签到</navigator>
     </view>
     <view class='list-item triangle'>
       <navigator>积分兑换</navigator>
-    </view>
+    </view> -->
     <view class='list-item triangle'>
       <navigator url='/pages/get-discount/index'>领取优惠券</navigator>
     </view>

@@ -2,6 +2,7 @@
   "pages":[
     "pages/authorize/authorize",
     "pages/index/index",
+    "pages/mycollect/index",
     "pages/cart-pay/index",
     "pages/about/about",
     "pages/cash/getcash",

@@ -64,19 +64,25 @@ Page({
       }     
     })
     WXAPI.getAmount(wx.getStorageSync('token')).then(res => {
-      
+      console.log(res)
       if(res.code==0){
         this.setData({
           amounts:res.data
         })
-      }else if(res.code==2000){
-        wx.redirectTo({
-          url: '/pages/authorize/authorize',
-        })
+      }else{
         wx.showModal({
-          title: '错误',
-          content: res.msg+res.code,
+          title: '提示',
+          content: res.msg,
+          success:function(res){
+            if(res.confirm){
+              wx.removeStorageSync('token');
+              wx.redirectTo({
+                url: '/pages/authorize/authorize',
+              })
+            }
+          }
         })
+        
       }
       
     }).catch(err=>{

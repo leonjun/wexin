@@ -121,8 +121,23 @@ module.exports={
   getDiscountList:(data)=>{
     return request('/discounts/coupons','get',data,true)
   },
+  //领取优惠券
   getDiscount: (data) => {
     return request('/discounts/fetch', 'post', data, true)
   },
-  
+  //收藏商品
+  collectGood:(data)=>{
+    return request('/shop/goods/fav/add','post',data,true)
+  },
+  //收藏商品列表
+  collectGoodList: (data) => {
+    return request('/shop/goods/fav/list', 'post', data, true)
+  },
+  //检查收藏
+  collectCheck: (data) => {
+    return request('/shop/goods/fav/check', 'get', data, true)
+  },
+  deleteCollect:(data)=>{
+    return request('/shop/goods/fav/delete','post',data,true)
+  }
 }

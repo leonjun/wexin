@@ -1,5 +1,5 @@
-// pages/get-discount/index.js
-const WXAPI = require('../../api/api.js');
+// pages/mycollect/index.js
+const WXAPI = require('../../api/api.js')
 Page({
 
   /**
@@ -30,11 +30,12 @@ Page({
     let data={
       token:wx.getStorageSync('token')
     }
-    WXAPI.getDiscountList(data).then(res=>{
+    let _this=this;
+    WXAPI.collectGoodList(data).then(res=>{
       console.log(res)
       if(res.code==0){
-        this.setData({
-          discountlist:res.data
+        _this.setData({
+          collections:res.data
         })
       }else{
         wx.showModal({
@@ -80,29 +81,12 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getdiscount:function(e){
-    console.log(e)
-    let id=e.currentTarget.dataset.id;
-    let token=wx.getStorageSync('token');
-    let data={
-      id:id,
-      token:token
-    }
-    WXAPI.getDiscount(data).then(res=>{
-      console.log(res)
-      if (res.code == 20003){
-        wx.showToast({
-          title: "不能贪心哦~~",
-        })
-      }else if (res.code == 0) {
-        wx.showToast({
-          title: "领取成功",
-        })
-      }else{
-        wx.showToast({
-          title: res.msg,
-        })
-      }
+  toGood:function(e){
+    
+    let id = e.currentTarget.dataset.id;
+    console.log(id)
+    wx.navigateTo({
+      url: '/pages/goods/goodsdetail?id='+id,
     })
   }
 })

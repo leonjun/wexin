@@ -1,0 +1,20 @@
+/* pages/mycollect/index.wxss */
+.collect{
+  padding: 0 30rpx;
+  margin: 16rpx 0;
+}
+.collect-list{
+  display: flex;
+}
+.collect-list image{
+  width: 180rpx;
+  height: 180rpx;
+}
+.collect-name{
+  margin-left:20rpx;
+  font-size:26rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}

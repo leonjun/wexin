@@ -37,11 +37,11 @@
   margin-left: 50rpx;
   text-align: right;
 }
-.number{
+/* .number{
   position: absolute;
   right: 0;
   buttom:0;
-}
+} */
 
 .good-price{
   margin: 28rpx 0;
