@@ -79,5 +79,6 @@
       <navigator url='/pages/get-discount/index'>领取优惠券</navigator>
     </view>
   </view>
-  
+  <view class='line'></view>
+  <view bindtap='reset' class='reset'>重新授权登录</view>
 </view>

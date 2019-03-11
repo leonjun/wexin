@@ -29,7 +29,10 @@ page{
   height: 80rpx;
   padding:0rpx 8rpx;
   position: relative;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 2rpx solid #aaa;
+}
+.list-item:last-child{
+  border: none;
 }
 .list-item-oder{
   border: none;
@@ -73,4 +76,8 @@ page{
 .list-item-oder{
   font-size: 34rpx;
   border-bottom: 2rpx solid #fafafa;
+}
+.reset{
+  text-align: center;
+  padding: 20rpx 0;
 }

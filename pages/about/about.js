@@ -148,5 +148,11 @@ Page({
     wx.navigateTo({
       url: '/pages/discount/index'
     })
+  },
+  reset:function(){
+    wx.removeStorageSync('token');
+    wx.redirectTo({
+      url: '/pages/authorize/authorize',
+    })
   }
 })
