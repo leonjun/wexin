@@ -3,11 +3,12 @@
   
   <view wx:if="{{iscart}}">
     <view style='padding-bottom:100rpx;'>
-      <checkbox-group bindchange="checkcart">
       
       
-      <view class='cartlist' wx:for="{{cartlist}}" wx:key="{{index}}">
-        <!-- <checkbox value='{{item}}' data-checked='{{item.checked}}' data-index="{{index}}" data-score='{{item.minScore}}' data-price='{{item.minPrice}}' data-count='{{item.count}}' checked='{{item.checked}}' /> -->
+      
+      <view class='cartlist'  wx:for="{{cartlist}}" wx:key="{{index}}">
+        <checkbox-group bindchange="checkcart" data-id='{{index}}'>
+        <checkbox value='{{item.goodsId}}'  checked='{{item.checked}}' />
         <view class='message'>
           <view>
             <image src='{{item.pic}}'></image>
@@ -18,25 +19,25 @@
             <view class='good-price'>￥{{item.minPrice}}</view>
             <view class='number'>
               
-              <view bindtap='minus' data-da="{{index}}" class='minus'>-</view>
+              <view catchtap='minus' data-da="{{index}}" class='minus'>-</view>
               
                 <input type='number' disabled min="0" max="{{item.stores}}" name="num" value='{{item.number}}' />
                       
-              <view bindtap='plus' data-da="{{index}}" class='plus'>+</view>
+              <view catchtap='plus'  data-da="{{index}}" class='plus'>+</view>
             </view>
           </view>
 
           
         </view>
-        
+        </checkbox-group>
       </view>  
-      </checkbox-group>
+      
     
     </view>
     <view class='jiesuan'>
       <view>合计：￥{{moneys}}+{{discount}}积分</view>
      
-     <view bindtap='topay'>结算</view>
+     <view class="nocheck {{hasCheck?'hascheck':''}}" bindtap='topay'>结算</view>
     </view>
   </view>
 

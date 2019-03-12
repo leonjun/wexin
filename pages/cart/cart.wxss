@@ -83,7 +83,7 @@
 }
 .jiesuan view:last-child{
   flex: 0 0 30%;
-  background-color: red;
+  /* background-color: red; */
   color: #fff;
   text-align: center;
   padding: 30rpx 0;
@@ -93,4 +93,11 @@
   width:400rpx;
   white-space:nowrap;
   text-overflow:ellipsis;
+}
+.nocheck{
+  background-color: #ccc;
+  
+}
+.hascheck{
+  background-color: red;
 }

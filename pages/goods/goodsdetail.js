@@ -130,7 +130,8 @@ Page({
       minPrice: deta.minPrice,
       minScore: deta.minScore,
       stores: deta.stores,
-      number: count
+      number: count,
+      checked:false
     }];
     let buydata=data;
     let id = this.data.details.basicInfo.id;

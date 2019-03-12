@@ -37,6 +37,8 @@ Page({
     
     if (_this.data.type=='buynow'){
       lists = wx.getStorageSync('buynow');
+    } else if (_this.data.type =='checkcart'){
+      lists = wx.getStorageSync('checkcart');
     }else{
       lists = wx.getStorageSync('carts');
     }
